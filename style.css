@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+/* Motorcycles Carousel */
+.carousel {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel__list .carousel__list__item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.carousel__list .carousel__list__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel__list .carousel__list__item .carousel__list__content {
+    position: absolute;
+    top: 3%;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding-right: 29%;
+    box-sizing: border-box;
+    color: white;
+    text-shadow: 0 5px 10px #0004;
+}
+
+.carousel__list .carousel__list__item .carousel__list__title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 1.3em;
+    margin-bottom: 16px;
+}
+
+.carousel__list .carousel__list__item .carousel__list__btn {
+    margin-top: 12px;
+}
+
+.carousel__list__item .carousel__list__btn a {
+    border: 2px solid rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px white;
+    background-color: rgba(255, 255, 255, .7);
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    padding: 5px 6px;
+    transition: all .4s;
+}
+.carousel__list__item .carousel__list__btn a:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: none;
+}
+
+/*Carousel Arrows*/
+.carousel__arrows {
+    position: absolute;
+    top: 47%;
+    left: 5%;
+    z-index: 100;
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+}
+
+.carousel__arrows button {
+    width: 48px;
+    height: 48px;
+    line-height: 10px;
+    border-radius: 50%;
+    border: 3px solid orange;
+    color: black;
+    font-family: monospace;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white;
+    box-shadow: 0 0 0 3px white, 0 0 0 3px white, inset 0 0 0 4px rgba(0, 0, 0, 1), 0 5px 20px rgba(0, 0, 0, .5);
+}
+
+.carousel__arrows button:hover {
+    border: 3px solid black;
+    background: rgba(0, 0, 0, .5);
+    color: white;
+}
+
+/* thumbails */
+.carousel__thumbnail {
+    position: absolute;
+    bottom: 25px;
+    left: 35%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+
+.carousel__thumbnail .carousel__thumbnail__item {
+    width: 142px;
+    height: 208px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.carousel__thumbnail .carousel__thumbnail__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+.carousel__thumbnail .carousel__thumbnail__item .carousel__thumbnail__content {
+    position: absolute;
+    bottom: -1px;
+    left: 3px;
+    color: white;
+    width: 92%;
+}
+
+.carousel__thumbnail .carousel__thumbnail__item .carousel__thumbnail__title {
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 105%;
+    text-align: center;
+    font-weight: 500;
+    background: rgba(0, 0, 0, .5);
+    padding: 2px 6px;
+    border-radius: 0 0 10px 10px;
+    border-top: 2px solid white;
+}
+
+/* animation */
+.carousel__list .carousel__list__item:nth-child(1) {
+    z-index: 1;
+}
+
+/* animation text in first item */
+.carousel__list .carousel__list__content .carousel__list__title,
+.carousel__list .carousel__list__content .carousel__list__description {
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0, 0, 0, .5);
+    padding: 3px 13px;
+    border: 1px solid rgba(255, 255, 255, .5);
+    box-shadow: 2px 3px 5px white;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.carousel__list .carousel__list__item:nth-child(1) .carousel__list__title,
+.carousel__list .carousel__list__item:nth-child(1) .carousel__list__description,
+.carousel__list .carousel__list__item:nth-child(1) .carousel__list__btn {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: display-content .5s 1s linear 1 forwards;
+}
+@keyframes display-content {
+    to {
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.carousel__list__content .carousel__list__title {
+    animation-delay: .8s!important;
+}
+
+.carousel__list__content .carousel__list__description {
+    animation-delay: 1s!important;
+    line-height: 1.4;
+    font-size: 1rem;
+    padding: 10px 13px;
+    margin-bottom: 12px;
+}
+
+.carousel__list__content .carousel__list__btn {
+    animation-delay: 1.2s!important;
+}
+
+/* trigger animation when clicking next button */
+.carousel.next .carousel__list .carousel__list__item:nth-child(1) img {
+    width: 142px;
+    height: 208px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 10px;
+    animation: display-image .5s linear 1 forwards;
+}
+@keyframes display-image {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .carousel__thumbnail .carousel__thumbnail__item:nth-last-child(1) {
+    overflow: hidden;
+    animation: display-thumbnail .5s linear 1 forwards;
+}
+.carousel.previous .carousel__list .carousel__list__item img {
+    z-index: 100;
+}
+@keyframes display-thumbnail {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .carousel__thumbnail {
+    animation: active-next .5s linear 1 forwards;
+}
+@keyframes active-next {
+    from {
+        transform: translateX(142px);
+    }
+}
+
+/* trigger animation when clicking previous button */
+.carousel.previous .carousel__list .carousel__list__item:nth-child(2) {
+    z-index: 2;
+}
+
+.carousel.previous .carousel__list .carousel__list__item:nth-child(2) img {
+    animation: active-previous 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes active-previous {
+    to {
+        width: 142px;
+        height: 208px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.previous .carousel__thumbnail .carousel__thumbnail__item:nth-child(1) {
+    overflow: hidden;
+    opacity: 0;
+    animation: display-thumbnail .5s linear 1 forwards;
+}
+
+.carousel.next .carousel__arrows button,
+.carousel.previous .carousel__arrows button {
+    pointer-events: none;
+}
+
+.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__title,
+.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__description,
+.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__btn {
+    animation: hide-content 1.5s linear 1 forwards!important;
+}
+@keyframes hide-content {
+    to {
+        transform: translateY(-142px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+
+/*Media Queries Carousel*/
+@media(max-width: 1180px) {
+    .carousel__thumbnail {
+        left: 29%;
+    }
+}
+
+@media(max-width: 1000px) {
+    .carousel__thumbnail {
+        left: 20%;
+    }
+}
+
+@media(max-width: 900px) {
+    .carousel__list .carousel__list__item .carousel__list__content {
+        left: 50%;
+        width: 95%;
+    }
+
+    .carousel__arrows,
+    .carousel__thumbnail {
+        left: 3%;
+    }
+}
+
+@media(max-width: 750px) {
+    .carousel__list .carousel__list__item .carousel__list__content {
+        padding-right: 0;
+    }
+
+    .carousel .carousel__list .carousel__list__item .carousel__list__title {
+        font-size: 1.4rem;
+    }
+
+    .carousel__list__content .carousel__list__description {
+        font-size: .85rem;
+    }
+
+    /*change thumbnail size*/
+    .carousel__thumbnail .carousel__thumbnail__item {
+        width: 128px;
+        height: 188px;
+    }
+
+    .carousel.next .carousel__list .carousel__list__item:nth-child(1) img {
+        width: 128px;
+        height: 188px;
+    }
+
+    @keyframes effectNext {
+        from {
+            transform: translateX(128px);
+        }
+    }
+
+    @keyframes outFrame {
+        to {
+            width: 128px;
+            height: 188px;
+        }
+    }
+}
+
+@media(max-width: 650px) {
+    .carousel__thumbnail .carousel__thumbnail__item:last-child {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+    .carousel__thumbnail {
+        column-gap: 14px;
+    }
+}
+
+@media(max-width: 450px) {
+    /*change thumbnail size*/
+    .carousel__thumbnail .carousel__thumbnail__item {
+        width: 115px;
+        height: 169px;
+    }
+
+    .carousel.next .carousel__list .carousel__list__item:nth-child(1) img {
+        width: 120px;
+        height: 177px;
+    }
+
+    @keyframes effectNext {
+        from {
+            transform: translateX(120px);
+        }
+    }
+
+    @keyframes outFrame {
+        to {
+            width: 120px;
+            height: 177px;
+        }
+    }
+
+    @keyframes contentOut {
+        to {
+            transform: translateY(-120px);
+        }
+    }
+}
+
+@media(max-width: 400px) {
+    /*change thumbnail size*/
+    .carousel__thumbnail .carousel__thumbnail__item {
+        width: 105px;
+        height: 153px;
+    }
+}
