@@ -133,6 +133,7 @@ body {
     object-fit: cover;
     border-radius: 10px;
     border: 2px solid white;
+    box-shadow: 0 0 0 2px black, 0 0 0 3px black, inset 0 0 0 2px rgba(0, 0, 0, 1);
 }
 
 .carousel__thumbnail .carousel__thumbnail__item .carousel__thumbnail__content {
