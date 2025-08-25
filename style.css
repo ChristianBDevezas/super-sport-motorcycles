@@ -35,50 +35,33 @@ body {
 .carousel__list .carousel__list__item .carousel__list__content {
     position: absolute;
     top: 3%;
-    left: 45%;
+    left: 35%;
     transform: translateX(-50%);
-    width: 80%;
-    padding-right: 29%;
+    width: 60%;
+    padding-right: calc(10% + 2vw);
     box-sizing: border-box;
     color: white;
     text-shadow: 0 5px 10px #0004;
 }
 
 .carousel__list .carousel__list__item .carousel__list__title {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
     line-height: 1.3em;
     margin-bottom: 16px;
+    padding: 2px 10px;
 }
 
-.carousel__list .carousel__list__item .carousel__list__btn {
-    margin-top: 12px;
-}
-
-.carousel__list__item .carousel__list__btn a {
-    border: 2px solid rgba(0, 0, 0, .5);
-    border-radius: 5px;
-    box-shadow: 2px 3px 5px white;
-    background-color: rgba(255, 255, 255, .7);
-    letter-spacing: 2px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    text-decoration: none;
-    color: black;
-    padding: 5px 6px;
-    transition: all .4s;
-}
-.carousel__list__item .carousel__list__btn a:hover {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: none;
+.carousel__list .carousel__list__content .carousel__list__description {
+    padding: 5px 13px;
 }
 
 /*Carousel Arrows*/
 .carousel__arrows {
     position: absolute;
-    top: 47%;
+    top: 35%;
     left: 5%;
-    z-index: 100;
+    z-index: 4;
     display: flex;
     column-gap: 16px;
     align-items: center;
@@ -109,13 +92,13 @@ body {
     color: white;
 }
 
-/* thumbails */
+/* Thumbails */
 .carousel__thumbnail {
     position: absolute;
     bottom: 25px;
     left: 35%;
     width: max-content;
-    z-index: 100;
+    z-index: 4;
     display: flex;
     gap: 20px;
 }
@@ -151,6 +134,7 @@ body {
     width: 105%;
     text-align: center;
     font-weight: 500;
+    font-size: 1rem;
     background: rgba(0, 0, 0, .5);
     padding: 2px 6px;
     border-radius: 0 0 10px 10px;
@@ -167,7 +151,6 @@ body {
 .carousel__list .carousel__list__content .carousel__list__description {
     font-family: Arial, Helvetica, sans-serif;
     background: rgba(0, 0, 0, .5);
-    padding: 3px 13px;
     border: 1px solid rgba(255, 255, 255, .5);
     box-shadow: 2px 3px 5px white;
     border-radius: 4px;
@@ -175,8 +158,7 @@ body {
 }
 
 .carousel__list .carousel__list__item:nth-child(1) .carousel__list__title,
-.carousel__list .carousel__list__item:nth-child(1) .carousel__list__description,
-.carousel__list .carousel__list__item:nth-child(1) .carousel__list__btn {
+.carousel__list .carousel__list__item:nth-child(1) .carousel__list__description {
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
@@ -200,10 +182,6 @@ body {
     font-size: 1rem;
     padding: 10px 13px;
     margin-bottom: 12px;
-}
-
-.carousel__list__content .carousel__list__btn {
-    animation-delay: 1.2s!important;
 }
 
 /* trigger animation when clicking next button */
@@ -230,15 +208,18 @@ body {
     overflow: hidden;
     animation: display-thumbnail .5s linear 1 forwards;
 }
-.carousel.previous .carousel__list .carousel__list__item img {
-    z-index: 100;
-}
 @keyframes display-thumbnail {
     from {
         width: 0;
         opacity: 0;
     }
 }
+.carousel.previous .carousel__thumbnail .carousel__thumbnail__item:nth-child(1) {
+    overflow: hidden;
+    opacity: 0;
+    animation: display-thumbnail .5s linear 1 forwards;
+}
+
 .carousel.next .carousel__thumbnail {
     animation: active-next .5s linear 1 forwards;
 }
@@ -249,6 +230,10 @@ body {
 }
 
 /* trigger animation when clicking previous button */
+.carousel.previous .carousel__list .carousel__list__item img {
+    z-index: 5;
+}
+
 .carousel.previous .carousel__list .carousel__list__item:nth-child(2) {
     z-index: 2;
 }
@@ -269,20 +254,13 @@ body {
     }
 }
 
-.carousel.previous .carousel__thumbnail .carousel__thumbnail__item:nth-child(1) {
-    overflow: hidden;
-    opacity: 0;
-    animation: display-thumbnail .5s linear 1 forwards;
-}
-
 .carousel.next .carousel__arrows button,
 .carousel.previous .carousel__arrows button {
     pointer-events: none;
 }
 
 .carousel.previous .carousel__list__item:nth-child(2) .carousel__list__title,
-.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__description,
-.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__btn {
+.carousel.previous .carousel__list__item:nth-child(2) .carousel__list__description {
     animation: hide-content 1.5s linear 1 forwards!important;
 }
 @keyframes hide-content {
@@ -294,6 +272,18 @@ body {
 }
 
 /*Media Queries Carousel*/
+@media(min-width: 1400px) {
+        .carousel__list .carousel__list__item .carousel__list__content {
+            padding-right: calc(20% + 2vw);
+        }
+}
+
+@media(min-width: 1650px) {
+        .carousel__list .carousel__list__item .carousel__list__content {
+            padding-right: calc(25% + 2vw);
+        }
+}
+
 @media(max-width: 1180px) {
     .carousel__thumbnail {
         left: 29%;
@@ -318,13 +308,13 @@ body {
     }
 }
 
-@media(max-width: 750px) {
+@media(max-width: 768px) {
     .carousel__list .carousel__list__item .carousel__list__content {
-        padding-right: 0;
+        padding-right: 10px;
     }
 
     .carousel .carousel__list .carousel__list__item .carousel__list__title {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .carousel__list__content .carousel__list__description {
@@ -357,6 +347,11 @@ body {
 }
 
 @media(max-width: 650px) {
+    .carousel__arrows button {
+        width: 45px;
+        height: 45px;
+    }
+
     .carousel__thumbnail .carousel__thumbnail__item:last-child {
         display: none;
     }
@@ -369,6 +364,10 @@ body {
 }
 
 @media(max-width: 450px) {
+    .carousel__list .carousel__list__item .carousel__list__content {
+        padding-right: 5px;
+    }
+
     /*change thumbnail size*/
     .carousel__thumbnail .carousel__thumbnail__item {
         width: 115px;
@@ -405,5 +404,22 @@ body {
     .carousel__thumbnail .carousel__thumbnail__item {
         width: 105px;
         height: 153px;
+    }
+}
+
+/*Height Control*/
+@media(max-height: 420px) {
+    .carousel__arrows {
+        top: 45%;
+    }
+
+    .carousel__thumbnail {
+        left: 23%;
+    }
+}
+
+@media(max-height: 375px) {
+    .carousel__thumbnail .carousel__thumbnail__item:last-child {
+        display: none;
     }
 }
